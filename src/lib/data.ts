@@ -31,7 +31,7 @@ export const profile: Profile = {
 	location: 'India',
 	bio: 'Passionate about building scalable web applications and exploring new technologies.',
 	status: 'Busy with exams',
-	avatarUrl: 'https://github.com/MannuVilasara.png' // Utilizing a placeholder
+	avatarUrl: '/avatar.png' // Utilizing a placeholder
 };
 
 export const links: LinkItem[] = [
