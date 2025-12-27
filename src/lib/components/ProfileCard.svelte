@@ -1,14 +1,66 @@
 <script lang="ts">
 	import type { Profile } from '$lib/data';
+	import { quotes } from '$lib/data';
+	import { onMount, onDestroy } from 'svelte';
 
 	let { profile }: { profile: Profile } = $props();
+
+	// Time Logic
+	let time = $state(new Date());
+	let interval: any;
+
+	// Quote Logic
+	let quote = $state(quotes[0]);
+
+	// Spotlight Logic
+	let card: HTMLElement;
+	let mouseX = $state(0);
+	let mouseY = $state(0);
+	let isHovering = $state(false);
+
+	function updateMousePosition(e: MouseEvent) {
+		if (!card) return;
+		const rect = card.getBoundingClientRect();
+		mouseX = e.clientX - rect.left;
+		mouseY = e.clientY - rect.top;
+		isHovering = true;
+	}
+
+	function handleMouseLeave() {
+		isHovering = false;
+	}
+
+	onMount(() => {
+		interval = setInterval(() => {
+			time = new Date();
+		}, 1000);
+		
+		// Random quote on mount
+		quote = quotes[Math.floor(Math.random() * quotes.length)];
+	});
+
+	onDestroy(() => {
+		clearInterval(interval);
+	});
 </script>
 
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
-	class="flex h-full flex-col justify-between rounded-3xl border border-neutral-800 bg-neutral-900/50 p-8 backdrop-blur-sm"
+	bind:this={card}
+	onmousemove={updateMousePosition}
+	onmouseleave={handleMouseLeave}
+	class="relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900/50 p-6 text-center backdrop-blur-sm md:p-8 md:text-left"
 >
-	<div>
-		<div class="relative mb-6 inline-block">
+	<!-- Spotlight Effect -->
+	<div
+		class="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300"
+		style:opacity={isHovering ? 1 : 0}
+		style:background={`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(255,255,255,0.06), transparent 40%)`}
+	></div>
+
+	<!-- Content -->
+	<div class="relative z-10">
+		<div class="relative mb-6 inline-block md:mx-0">
 			<img
 				src={profile.avatarUrl}
 				alt={profile.name}
@@ -40,28 +92,35 @@
 		<p class="text-neutral-400">{profile.role}</p>
 	</div>
 
-	<div class="mt-8">
-		<div class="mb-6 flex items-center gap-2 text-sm text-neutral-500">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="16"
-				height="16"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle
-					cx="12"
-					cy="10"
-					r="3"
-				/></svg
-			>
-			{profile.location}
+	<div class="relative z-10 mt-8">
+		<div class="mb-6 flex w-full items-center justify-center gap-2 overflow-x-auto whitespace-nowrap text-sm text-neutral-500 [scrollbar-width:none] md:justify-start">
+			<div class="flex shrink-0 items-center gap-1.5 rounded-full bg-neutral-800/50 px-3 py-1">
+				<span class="relative flex h-2 w-2">
+					<span
+						class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"
+					></span>
+					<span class="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
+				</span>
+				<span class="font-mono text-xs">
+					{time.toLocaleTimeString('en-US', {
+						timeZone: 'Asia/Kolkata',
+						hour: '2-digit',
+						minute: '2-digit'
+					})}
+					IST
+				</span>
+			</div>
+			<span>•</span>
+			<span>{profile.location}</span>
 		</div>
-		<p class="leading-relaxed text-neutral-300">
-			{profile.bio}
-		</p>
+
+		<div class="space-y-2">
+			<p class="text-sm italic font-medium leading-relaxed text-neutral-400">
+				"{quote.text}"
+			</p>
+			<p class="text-xs font-semibold uppercase tracking-wider text-neutral-600">
+				— {quote.author}
+			</p>
+		</div>
 	</div>
 </div>

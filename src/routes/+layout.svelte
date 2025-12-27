@@ -2,6 +2,7 @@
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
 
+	import Cursor from '$lib/components/Cursor.svelte';
 	let { children } = $props();
 </script>
 
@@ -14,4 +15,5 @@
 		rel="stylesheet"
 	/>
 </svelte:head>
+<Cursor />
 {@render children()}
