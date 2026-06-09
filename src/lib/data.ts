@@ -8,127 +8,127 @@ import Youtube from 'lucide-svelte/icons/youtube';
 import DiscordIcon from '$lib/components/DiscordIcon.svelte';
 
 export interface Profile {
-	name: string;
-	role: string;
-	location: string;
-	bio: string;
-	status: string;
-	avatarUrl: string;
+    name: string;
+    role: string;
+    location: string;
+    bio: string;
+    status: string;
+    avatarUrl: string;
 }
 
 export interface LinkItem {
-	title: string;
-	subtitle: string;
-	url: string;
-	icon: any;
-	color: string;
-	class?: string; // For grid spans e.g., 'col-span-2'
+    title: string;
+    subtitle: string;
+    url: string;
+    icon: any;
+    color: string;
+    class?: string; // For grid spans e.g., 'col-span-2'
 }
 
 export const profile: Profile = {
-	name: 'Manpreet Singh',
-	role: 'Full Stack Developer',
-	location: 'India',
-	bio: 'Passionate about building scalable web applications and exploring new technologies.',
-	status: 'Busy with exams',
-	avatarUrl: '/avatar.png' // Utilizing a placeholder
+    name: 'Manpreet Singh',
+    role: 'Full Stack Developer',
+    location: 'India',
+    bio: 'Passionate about building scalable web applications and exploring new technologies.',
+    status: 'Busy with exams',
+    avatarUrl: '/avatar.png' // Utilizing a placeholder
 };
 
 export interface Quote {
-	text: string;
-	author: string;
+    text: string;
+    author: string;
 }
 
 export const quotes: Quote[] = [
-	{
-		text: 'The only way to do great work is to love what you do.',
-		author: 'Steve Jobs'
-	},
-	{
-		text: 'Code is like humor. When you have to explain it, it’s bad.',
-		author: 'Cory House'
-	},
-	{
-		text: 'First, solve the problem. Then, write the code.',
-		author: 'John Johnson'
-	},
-	{
-		text: 'Simplicity is the soul of efficiency.',
-		author: 'Austin Freeman'
-	},
-	{
-		text: 'Make it work, make it right, make it fast.',
-		author: 'Kent Beck'
-	},
-	{
-		text: 'Talk is cheap. Show me the code.',
-		author: 'Linus Torvalds'
-	}
+    {
+        text: 'The only way to do great work is to love what you do.',
+        author: 'Steve Jobs'
+    },
+    {
+        text: 'Code is like humor. When you have to explain it, it’s bad.',
+        author: 'Cory House'
+    },
+    {
+        text: 'First, solve the problem. Then, write the code.',
+        author: 'John Johnson'
+    },
+    {
+        text: 'Simplicity is the soul of efficiency.',
+        author: 'Austin Freeman'
+    },
+    {
+        text: 'Make it work, make it right, make it fast.',
+        author: 'Kent Beck'
+    },
+    {
+        text: 'Talk is cheap. Show me the code.',
+        author: 'Linus Torvalds'
+    }
 ];
 
 export const links: LinkItem[] = [
-	{
-		title: 'Portfolio',
-		subtitle: 'My Work',
-		url: 'https://mannu.live',
-		icon: Globe,
-		color: 'text-blue-500',
-		class: 'col-span-1 md:col-span-2'
-	},
-	{
-		title: 'GitHub',
-		subtitle: 'Code',
-		url: 'https://github.com/MannuVilasara',
-		icon: Github,
-		color: 'text-white',
-		class: 'col-span-1'
-	},
-	{
-		title: 'LinkedIn',
-		subtitle: 'Connect',
-		url: 'https://linkedin.com/in/mannuvilasara',
-		icon: Linkedin,
-		color: 'text-blue-600',
-		class: 'col-span-1'
-	},
-	{
-		title: 'Twitter',
-		subtitle: 'Follow',
-		url: 'https://twitter.com/dev_mannuu',
-		icon: Twitter,
-		color: 'text-sky-500',
-		class: 'col-span-1'
-	},
-	{
-		title: 'Instagram',
-		subtitle: 'Photos',
-		url: 'https://instagram.com/dev_mannuu',
-		icon: Instagram,
-		color: 'text-pink-500',
-		class: 'col-span-1'
-	},
-	{
-		title: 'YouTube',
-		subtitle: 'Videos',
-		url: 'https://youtube.com',
-		icon: Youtube,
-		color: 'text-red-500',
-		class: 'col-span-1 md:col-span-2'
-	},
-	{
-		title: 'Discord',
-		subtitle: 'Chat',
-		url: 'https://discord.com/users/786926252811485186',
-		icon: DiscordIcon,
-		color: 'text-indigo-500',
-		class: 'col-span-1 md:col-span-2'
-	},
-	{
-		title: 'Email',
-		subtitle: 'Contact',
-		url: 'mailto:mannuvilasara@gmail.com',
-		icon: Mail,
-		color: 'text-purple-500',
-		class: 'col-span-1 md:col-span-2'
-	}
+    {
+        title: 'Portfolio',
+        subtitle: 'My Work',
+        url: 'https://mannu.tech',
+        icon: Globe,
+        color: 'text-blue-500',
+        class: 'col-span-1 md:col-span-2'
+    },
+    {
+        title: 'GitHub',
+        subtitle: 'Code',
+        url: 'https://github.com/MannuVilasara',
+        icon: Github,
+        color: 'text-white',
+        class: 'col-span-1'
+    },
+    {
+        title: 'LinkedIn',
+        subtitle: 'Connect',
+        url: 'https://linkedin.com/in/mannuvilasara',
+        icon: Linkedin,
+        color: 'text-blue-600',
+        class: 'col-span-1'
+    },
+    {
+        title: 'Twitter',
+        subtitle: 'Follow',
+        url: 'https://twitter.com/dev_mannuu',
+        icon: Twitter,
+        color: 'text-sky-500',
+        class: 'col-span-1'
+    },
+    {
+        title: 'Instagram',
+        subtitle: 'Photos',
+        url: 'https://instagram.com/dev_mannuu',
+        icon: Instagram,
+        color: 'text-pink-500',
+        class: 'col-span-1'
+    },
+    {
+        title: 'YouTube',
+        subtitle: 'Videos',
+        url: 'https://youtube.com',
+        icon: Youtube,
+        color: 'text-red-500',
+        class: 'col-span-1 md:col-span-2'
+    },
+    {
+        title: 'Discord',
+        subtitle: 'Chat',
+        url: 'https://discord.com/users/786926252811485186',
+        icon: DiscordIcon,
+        color: 'text-indigo-500',
+        class: 'col-span-1 md:col-span-2'
+    },
+    {
+        title: 'Email',
+        subtitle: 'Contact',
+        url: 'mailto:mannuvilasara@gmail.com',
+        icon: Mail,
+        color: 'text-purple-500',
+        class: 'col-span-1 md:col-span-2'
+    }
 ];
